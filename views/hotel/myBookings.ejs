@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+
+    <% if(bookings.length===0){ %>
+
+        <h2>No Booking Found</h2>
+   <% } else { %>
+    
+    <% bookings.forEach(booking=>{ %>
+<div>
+        <h2> Room Number :<%= booking.room.roomNumber %></h2>
+        <h4>Room Type : <%= booking.room.type %></h4>
+        <h4>Room Price : <%= booking.room.price %></h4>
+        <h4> Check-In : <%= booking.checkIn %></h4>
+        <h4>Check-Out : <%= booking.checkOut %></h4>
+        <h4>Status : <%= booking.status %></h4>
+        <hr>
+</div>
+   <% }) %>
+
+   <% } %>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ROOM</h1>
+
+    <h4>Room Number : <%= room.roomNumber %></h4>
+    <h4>Room Type : <%= room.type %></h4>
+    <h4>Room Price : <%= room.price %></h4>
+
+    <form action="/booking/create/<%= room.id %>" method="post">
+
+        <label >check-In Time</label>
+        <input type="date" name="checkIn">
+
+        <br>
+        <br>
+
+        <label >check-out Time</label>
+        <input type="date" name="checkOut">
+
+        <br>
+        <br>
+
+        <button type="submit">Book Now</button>
+    </form>
+
+
+</body>
+</html>

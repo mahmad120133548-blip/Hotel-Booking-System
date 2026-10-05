@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+</head>
+<body>
+    <h1>All Bookings</h1>
+
+    <% if(bookings.length===0){ %>
+
+        <h2>No Booking Found</h2>
+   <% } else { %>
+
+    <% bookings.forEach(booking=>{ %>
+
+        <div>
+            <h3>Booking Id: <%=booking.id %></h3>
+            <h3>Customer Name: <%=booking.account.name %></h3>
+            <h3>Customer E-mail: <%=booking.account.email %></h3>
+            <h3>Room Number: <%= booking.room.roomNumber %></h3>
+            <h3>Room Type: <%= booking.room.type %></h3>
+            <h3>Room Price : <%= booking.room.price %></h3>
+            <h3>Check In : <%= booking.checkIn %></h3>
+            <h3>Check Out : <%= booking.checkOut %></h3>
+            <h3>Status : <%= booking.status %></h3>
+
+            <form action="/booking/status/<%= booking.id %>" method="post">
+                <select name="status">
+                    <option value="PENDING" <%= booking.status==="PENDING"?"selected" : "" %>>PENDING</option>
+                    <option value="CANCEL" <%= booking.status==="CANCEL"?"selected" : "" %> >CANCEL</option>
+                    <option value="CONFIRM" <%= booking.status==="CONFIRM"? "selected" : "" %>>CONFIRM</option>
+                </select>
+
+                <button type="submit">update status</button>
+            </form>
+           
+            <hr>
+        </div>
+
+   <% }) %>
+
+  <% } %>
+
+</body>
+</html>

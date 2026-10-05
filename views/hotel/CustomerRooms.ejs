@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rooms</title>
+</head>
+<body>
+    <% rooms.forEach(room=>{ %>
+        <div>
+            <h2>Room Number: <%= room.roomNumber %></h2>
+            <h4>Room type: <%= room.type %></h4>
+            <h4>Room Price per Night: <%= room.price %></h4>
+
+            <a href="/booking/view/<%= room.id %>">Book Now</a>
+        </div>
+
+     <% }) %>
+</body>
+</html>

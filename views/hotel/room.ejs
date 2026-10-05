@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+</head>
+<body>
+
+    <h1>Rooms</h1>
+    <% rooms.forEach(room=>{ %>
+
+        <h1> Room Number :<%= room.roomNumber %></h1>
+        <h4> Room Type :<%= room.type %></h4>
+        <h4> Room Price : <%= room.price %></h>
+            <a href="/room/edit/<%= room.id %>">Edit Room</a>
+
+            <form action="/room/delete/<%= room.id %>" method="post">
+                <button type="submit">delete</button>
+            </form>
+
+   <% })  %>
+    </table>
+</body>
+</html>

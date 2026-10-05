@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model product {
+  id       Int    @id @default(autoincrement())
+  name     String  @unique
+  price    Int
+  quantity Int
+}
+
+model student {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  age      Int
+
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+}
+
+model Course {
+ id       Int       @id @default(autoincrement())
+  name     String
+
+  students student[]
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+
+  passport Passport?
+}
+
+model Passport {
+  id Int @id @default(autoincrement())
+  passport_number Int @unique
+  country  String
+
+  userId Int @unique 
+  user User @relation(fields:[userId], references:[id])
+}
+
+model Book{
+  id Int @id @default(autoincrement())
+  title   String
+  author  String
+  price  Int
+}
+
+model Employee{
+  id Int @id @default(autoincrement())
+  name String 
+  email String @unique
+  Password String
+}
+
+model Account{
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  role String @default("CUSTOMER")
+
+  bookings Booking[]
+}
+
+model Room{
+  id Int @id @default(autoincrement())
+  roomNumber String @unique
+  type String
+  price Int
+
+  bookings Booking[]
+}
+
+model Booking{
+  id Int @id @default(autoincrement())
+  checkIn DateTime
+  checkOut DateTime
+  status String @default("PENDING")
+
+  accountId Int
+  account Account @relation(fields:[accountId],references:[id])
+
+  roomId Int
+  room Room @relation(fields:[roomId],references:[id])
+}

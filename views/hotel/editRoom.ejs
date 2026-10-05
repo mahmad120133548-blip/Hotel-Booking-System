@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Room</title>
+</head>
+<body>
+    <h1>Edit Room</h1>
+
+    <form action="/room/update/<%= room.id %>" method="post">
+
+        <input type="text" name="roomNumber" value="<%= room.roomNumber %>">
+
+        <input type="text" name="type" value="<%= room.type %>">
+
+        <input type="number" name="price" value="<%= room.price %>">
+
+        <button type="submit">update</button>
+    </form>
+</body>
+</html>
